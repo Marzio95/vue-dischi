@@ -1,14 +1,12 @@
 <template>
   <div class="container-fluid bkg_cont">
-    <div class="container">
+    <div class="timer" v-if="arrayDischi == null">Pagina in caricamento</div>
+    <div v-else class="container">
       <div class="row gap-4 justify-content-center p-5">
         <Card-dischi
-          v-for="disc in arrayDischi"
-          :key="disc.text"
-          :card-src="disc.poster"
-          :card-text="disc.title"
-          :card-author="disc.author"
-          :card-year="disc.year"
+          v-for="album in arrayDischi"
+          :key="album.title"
+          :disco-data="album"
         ></Card-dischi>
       </div>
     </div>
@@ -29,12 +27,14 @@ export default {
     CardDischi,
   },
   created() {
-    axios
-      .get("https://flynn.boolean.careers/exercises/api/array/music")
-      .then((response) => {
-        console.log(response);
-        this.arrayDischi = response.data.response;
-      });
+    setTimeout(() => {
+      axios
+        .get("https://flynn.boolean.careers/exercises/api/array/music")
+        .then((response) => {
+          console.log(response);
+          this.arrayDischi = response.data.response;
+        });
+    }, 3000);
   },
 };
 </script>
@@ -42,5 +42,13 @@ export default {
 <style scoped lang="scss">
 .bkg_cont {
   background-color: #1e2d3b;
+}
+.timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  height: 90vh;
+  color: white;
 }
 </style>

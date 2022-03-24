@@ -1,9 +1,9 @@
 <template>
   <div class="card col-4 col-md-3 col-lg-2 text-white bkg_card text-center">
-    <img class="img mt-4" :src="cardSrc" :alt="cardText" />
-    <h4>{{ cardText }}</h4>
-    <h5 class="text-secondary">{{ cardAuthor }}</h5>
-    <h5 class="text-secondary">{{ cardYear }}</h5>
+    <img class="img mt-4" :src="discoData.poster" :alt="discoData.author" />
+    <h4>{{ discoData.title }}</h4>
+    <h5 class="text-secondary">{{ discoData.author }}</h5>
+    <h5 class="text-secondary">{{ discoData.year }}</h5>
   </div>
 </template>
 
@@ -11,10 +11,7 @@
 export default {
   name: "CardDischi",
   props: {
-    cardSrc: String,
-    cardText: String,
-    cardAuthor: String,
-    cardYear: String,
+    discoData: Object,
   },
 };
 </script>
