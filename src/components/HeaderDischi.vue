@@ -1,7 +1,9 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="bg-dark">header</div>
+      <div class="bkg_cont text-white">
+        <h1>SPOTIFY</h1>
+      </div>
     </div>
   </div>
 </template>
@@ -12,4 +14,8 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.bkg_cont {
+  background-color: #2e3a46;
+}
+</style>

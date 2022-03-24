@@ -19,5 +19,8 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  font-family: Roboto sans-serif;
+}
 @import "../node_modules/bootstrap/scss/bootstrap";
 </style>

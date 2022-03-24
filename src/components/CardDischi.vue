@@ -1,9 +1,9 @@
 <template>
-  <div class="card col-lg-2">
-    <img class="img" :src="cardSrc" :alt="cardText" />
-    <h2>{{ cardText }}</h2>
-    <h3>{{ cardAuthor }}</h3>
-    <h3>{{ cardYear }}</h3>
+  <div class="card col-4 col-md-3 col-lg-2 text-white bkg_card text-center">
+    <img class="img mt-4" :src="cardSrc" :alt="cardText" />
+    <h4>{{ cardText }}</h4>
+    <h5 class="text-secondary">{{ cardAuthor }}</h5>
+    <h5 class="text-secondary">{{ cardYear }}</h5>
   </div>
 </template>
 
@@ -19,4 +19,12 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.bkg_card {
+  background-color: #2e3a46;
+}
+h4 {
+  text-transform: uppercase;
+  margin: 1rem 0;
+}
+</style>

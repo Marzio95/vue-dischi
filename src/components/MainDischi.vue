@@ -1,14 +1,16 @@
 <template>
-  <div class="container">
-    <div class="row gap-3 justify-content-center bg-secondary">
-      <Card-dischi
-        v-for="disc in arrayDischi"
-        :key="disc.text"
-        :card-src="disc.poster"
-        :card-text="disc.title"
-        :card-author="disc.author"
-        :card-year="disc.year"
-      ></Card-dischi>
+  <div class="container-fluid bkg_cont">
+    <div class="container">
+      <div class="row gap-4 justify-content-center p-5">
+        <Card-dischi
+          v-for="disc in arrayDischi"
+          :key="disc.text"
+          :card-src="disc.poster"
+          :card-text="disc.title"
+          :card-author="disc.author"
+          :card-year="disc.year"
+        ></Card-dischi>
+      </div>
     </div>
   </div>
 </template>
@@ -107,4 +109,8 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.bkg_cont {
+  background-color: #1e2d3b;
+}
+</style>
