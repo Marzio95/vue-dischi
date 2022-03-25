@@ -1,12 +1,16 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div
-        class="b_t text-white d-flex justify-content-between align-items-center p-3"
-      >
+      <div class="b_t text-white flex p-3">
         <h1>SPOTIFY</h1>
 
-        <select class="rounded" name="generi" id="generi">
+        <select
+          class="rounded"
+          name="generi"
+          id="generi"
+          v-model="selected"
+          @change="$emit('changeMusic', selected)"
+        >
           <option default value="general">General</option>
           <option value="rock">Rock</option>
           <option value="jazz">Jazz</option>
@@ -21,6 +25,11 @@
 <script>
 export default {
   name: "HeaderDischi",
+  data() {
+    return {
+      selected: "general",
+    };
+  },
 };
 </script>
 
@@ -31,5 +40,10 @@ export default {
 select {
   height: 2.3rem;
   width: 5.5rem;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

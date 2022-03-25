@@ -23,6 +23,9 @@ export default {
       arrayDischi: null,
     };
   },
+  props: {
+    selectedGenere: String,
+  },
   components: {
     CardDischi,
   },
@@ -31,10 +34,27 @@ export default {
       axios
         .get("https://flynn.boolean.careers/exercises/api/array/music")
         .then((response) => {
-          console.log(response);
           this.arrayDischi = response.data.response;
         });
     }, 3000);
+  },
+  methods: {
+    changeMusicFunction() {
+      switch (this.selectedGenere) {
+        case `'general'`:
+          this.arrayDischi == this.response.data.response;
+          console.log(this.arrayDischi);
+          break;
+        case `'rock'`:
+          this.arrayDischi.filter((element) => {
+            console.log(element);
+            return element.genre == `'rock'`;
+          });
+          break;
+        default:
+        // code block
+      }
+    },
   },
 };
 </script>

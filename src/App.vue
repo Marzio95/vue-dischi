@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <HeaderDischi />
-    <MainDischi />
+    <HeaderDischi @changeMusic="genereChanged" />
+    <MainDischi :selected-genere="selected" />
   </div>
 </template>
 
@@ -11,9 +11,19 @@ import MainDischi from "./components/MainDischi.vue";
 
 export default {
   name: "App",
+  data() {
+    return {
+      selected: "",
+    };
+  },
   components: {
     HeaderDischi,
     MainDischi,
+  },
+  methods: {
+    genereChanged(selected) {
+      this.selected = selected;
+    },
   },
 };
 </script>
