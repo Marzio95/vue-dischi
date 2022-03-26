@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid bkg_cont">
     <div class="timer" v-if="arrayDischi == null">Pagina in caricamento</div>
-    <div v-else class="container">
+    <div v-else class="container height">
       <div class="row gap-4 justify-content-center p-5">
         <Card-dischi
           v-for="album in changeMusicFunction()"
@@ -41,7 +41,9 @@ export default {
   },
   methods: {
     changeMusicFunction() {
-      if (this.selectedGenere.toLowerCase() == "general") {
+      if (this.selectedGenere.toLowerCase() == "") {
+        return this.arrayDischi;
+      } else if (this.selectedGenere.toLowerCase() == "general") {
         return this.arrayDischi;
       } else {
         this.arrayDischiFiltered = this.arrayDischi.filter((element) => {
@@ -60,6 +62,7 @@ export default {
 <style scoped lang="scss">
 .bkg_cont {
   background-color: #1e2d3b;
+  min-height: calc(100vh - 88px);
 }
 .timer {
   display: flex;
