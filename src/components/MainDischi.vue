@@ -4,7 +4,7 @@
     <div v-else class="container">
       <div class="row gap-4 justify-content-center p-5">
         <Card-dischi
-          v-for="album in arrayDischi"
+          v-for="album in changeMusicFunction()"
           :key="album.title"
           :disco-data="album"
         ></Card-dischi>
@@ -21,6 +21,7 @@ export default {
   data() {
     return {
       arrayDischi: null,
+      arrayDischiFiltered: null,
     };
   },
   props: {
@@ -40,20 +41,17 @@ export default {
   },
   methods: {
     changeMusicFunction() {
-      switch (this.selectedGenere) {
-        case `'general'`:
-          this.arrayDischi == this.response.data.response;
-          console.log(this.arrayDischi);
-          break;
-        case `'rock'`:
-          this.arrayDischi.filter((element) => {
-            console.log(element);
-            return element.genre == `'rock'`;
-          });
-          break;
-        default:
-        // code block
+      if (this.selectedGenere.toLowerCase() == "general") {
+        return this.arrayDischi;
+      } else {
+        this.arrayDischiFiltered = this.arrayDischi.filter((element) => {
+          return (
+            element.genre.toLowerCase() == this.selectedGenere.toLowerCase()
+          );
+        });
       }
+
+      return this.arrayDischiFiltered;
     },
   },
 };
