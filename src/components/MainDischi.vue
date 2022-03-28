@@ -4,7 +4,7 @@
     <div v-else class="container height">
       <div class="row gap-4 justify-content-center p-5">
         <Card-dischi
-          v-for="album in changeMusicFunction()"
+          v-for="album in changeMusicFunction"
           :key="album.title"
           :disco-data="album"
         ></Card-dischi>
@@ -21,7 +21,6 @@ export default {
   data() {
     return {
       arrayDischi: null,
-      arrayDischiFiltered: null,
     };
   },
   props: {
@@ -39,21 +38,22 @@ export default {
         });
     }, 3000);
   },
-  methods: {
+  computed: {
     changeMusicFunction() {
+      let arrayDischiFiltered = null;
       if (this.selectedGenere.toLowerCase() == "") {
         return this.arrayDischi;
       } else if (this.selectedGenere.toLowerCase() == "general") {
         return this.arrayDischi;
       } else {
-        this.arrayDischiFiltered = this.arrayDischi.filter((element) => {
+        arrayDischiFiltered = this.arrayDischi.filter((element) => {
           return (
             element.genre.toLowerCase() == this.selectedGenere.toLowerCase()
           );
         });
       }
 
-      return this.arrayDischiFiltered;
+      return arrayDischiFiltered;
     },
   },
 };
